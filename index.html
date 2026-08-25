@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="luck AI" />
-  <title>luck AI 图片工作台</title>
+  <title>luck AI 图片工作台 V2</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="apple-touch-icon" href="icon-192.png" />
   <link rel="icon" href="icon-192.png" />
@@ -17,7 +17,7 @@
   <div class="app-shell">
     <header class="topbar">
       <div>
-        <div class="eyebrow">LUCK · MOBILE STUDIO</div>
+        <div class="eyebrow">LUCK · MOBILE STUDIO · V2</div>
         <h1>luck AI 图片工作台</h1>
         <p>提示词 · 证件照 · 订单 · 文案</p>
       </div>
@@ -28,9 +28,9 @@
       <section id="home" class="page active">
         <div class="hero-card">
           <div>
-            <span class="pill">iPhone 优先</span>
-            <h2>今天要处理什么？</h2>
-            <p>第一版无需登录、无需服务器。订单数据只保存在当前浏览器。</p>
+            <span class="pill">V2 · iPhone 优先</span>
+            <h2>把重复工作变成选择题</h2>
+            <p>无需服务器、无需 AI API。提示词由本地专业模板与参数规则组合生成，订单与收藏只保存在当前浏览器。</p>
           </div>
           <div class="stats-grid">
             <div class="stat"><strong id="statPending">0</strong><span>待处理</span></div>
@@ -41,59 +41,106 @@
 
         <div class="tool-grid">
           <button class="tool-card" data-go="prompt">
-            <span class="tool-icon">✦</span><div><h3>提示词生成器</h3><p>写真 / 职业照 / 证件照</p></div><span>›</span>
+            <span class="tool-icon">✦</span><div><h3>高级提示词</h3><p>男女发型 · 高级背景 · 写真预设</p></div><span>›</span>
           </button>
           <button class="tool-card" data-go="idphoto">
-            <span class="tool-icon">▣</span><div><h3>证件照尺寸</h3><p>毫米、像素、DPI 快速换算</p></div><span>›</span>
+            <span class="tool-icon">▣</span><div><h3>证件照工具</h3><p>尺寸 · 红蓝白背景 · 规范提示词</p></div><span>›</span>
           </button>
           <button class="tool-card" data-go="orders">
-            <span class="tool-icon">✓</span><div><h3>订单管理</h3><p>待制作 / 制作中 / 已完成</p></div><span>›</span>
+            <span class="tool-icon">✓</span><div><h3>订单管理</h3><p>平台 · 截止时间 · 状态 · 备份</p></div><span>›</span>
           </button>
           <button class="tool-card" data-go="copy">
-            <span class="tool-icon">Aa</span><div><h3>商品文案</h3><p>淘宝 / 小红书 / 闲鱼</p></div><span>›</span>
+            <span class="tool-icon">Aa</span><div><h3>商品文案</h3><p>淘宝 / 小红书 / 闲鱼 / 抖音</p></div><span>›</span>
           </button>
         </div>
 
-        <div class="note-card">
-          <strong>建议：</strong>先把你常用的人像提示词模板沉淀进来。后面再接 AI API、云端订单和客户交付页。
+        <div class="quick-card">
+          <div><strong>V2 新增</strong><span>12+ 高级写真方案 · 男女分开发型 · 12 种高级纯色背景 · 证件照三色背景 · 提示词收藏</span></div>
         </div>
+
+        <div class="note-card"><strong>隐私：</strong>当前版本不上传客户照片，也不会把订单同步到服务器。公开 GitHub 仓库可以看到网页源码，所以不要把客户照片、API Key 或真正需要保密的商业资料写进项目文件。</div>
       </section>
 
       <section id="prompt" class="page">
-        <div class="page-head"><button class="back" data-go="home">‹</button><div><h2>提示词生成器</h2><p>选择参数后自动拼成中文成品提示词</p></div></div>
+        <div class="page-head"><button class="back" data-go="home">‹</button><div><h2>高级提示词生成器</h2><p>风格预设 + 人物细节 + 摄影参数</p></div></div>
 
         <div class="form-card">
-          <label>人物类型<select id="pSubject"><option>年轻东亚女性</option><option>年轻东亚男性</option><option>儿童</option><option>情侣</option><option>职业人物</option></select></label>
-          <label>摄影类型<select id="pStyle"><option>超写实杂志人物写真</option><option>职业照</option><option>证件照</option><option>电影感人物肖像</option><option>日系生活方式写真</option><option>黑白高反差肖像</option></select></label>
-          <label>场景<select id="pScene"><option>极简灰色摄影棚</option><option>窗边自然光室内</option><option>城市夜景餐厅</option><option>绿植咖啡店</option><option>夏日户外</option><option>纯黑背景</option></select></label>
+          <div class="section-title"><span>01</span><div><strong>人物与风格</strong><small>先确定人物，再选择写真方向</small></div></div>
           <div class="two-col">
-            <label>发型<select id="pHair"><option>保持参考图发型不变</option><option>黑色中分长直发</option><option>自然短发</option><option>轻微碎发</option></select></label>
-            <label>服装<select id="pOutfit"><option>保持参考图服装不变</option><option>黑色极简西装</option><option>白色衬衫</option><option>深色休闲上衣</option></select></label>
+            <label>人物性别<select id="pGender"><option value="female">女生</option><option value="male">男生</option></select></label>
+            <label>人物身份<select id="pSubject"><option>年轻东亚女性</option><option>职业女性</option><option>大学生女生</option><option>年轻东亚男性</option><option>职业男性</option><option>大学生男生</option></select></label>
           </div>
-          <label>姿势<select id="pPose"><option>身体轻微侧转，表情自然克制</option><option>半身正面，直视镜头</option><option>不看镜头，望向画面外</option><option>双臂自然交叉，下颌微收</option></select></label>
+          <label>高级写真方案<select id="pStyle"></select></label>
+          <button id="applyPreset" class="secondary">应用该风格推荐参数</button>
+
+          <div class="section-title"><span>02</span><div><strong>造型</strong><small>发型会根据男生 / 女生自动切换</small></div></div>
           <div class="two-col">
-            <label>光线<select id="pLight"><option>大型柔光箱，柔和侧光</option><option>阴天自然窗光</option><option>伦勃朗光+轻微轮廓光</option><option>暖色钨丝灯+冷色环境光</option></select></label>
-            <label>镜头<select id="pLens"><option>85mm F1.4</option><option>50mm F2.0</option><option>35mm 轻微广角</option><option>iPhone 后置主摄</option></select></label>
+            <label>人物发型<select id="pHair"></select></label>
+            <label>服装<select id="pOutfit">
+              <option>保持参考图服装不变</option><option>象牙白宽松衬衫</option><option>白色极简衬衫</option><option>奶油白修身西装</option><option>浅卡其轻商务西装</option><option>浅蓝灰休闲衬衫</option><option>米白针织上衣</option><option>深灰极简西装</option><option>黑色高领针织衫</option><option>深色高级休闲上衣</option>
+            </select></label>
           </div>
-          <label>图片比例<select id="pRatio"><option>9:16 竖版</option><option>3:4 竖版</option><option>2:3 竖版</option><option>1:1 方图</option><option>4:5 竖版</option></select></label>
+
+          <div class="section-title"><span>03</span><div><strong>背景与构图</strong><small>包含高级纯色棚拍背景</small></div></div>
+          <label>背景<select id="pScene"></select></label>
+          <div id="scenePreview" class="scene-preview"><span class="scene-swatch"></span><div><strong>背景预览</strong><small id="sceneDesc"></small></div></div>
+          <label>姿势<select id="pPose">
+            <option>身体轻微侧转约 30°，肩膀放松，下颌自然</option>
+            <option>半身正面，眼神自然直视镜头，嘴角轻微放松</option>
+            <option>身体侧转约 45°，头部轻轻转回镜头方向</option>
+            <option>坐在极简椅子上，身体微微前倾，双手自然放松</option>
+            <option>一只手自然搭桌面，另一只手放松垂下</option>
+            <option>双臂自然交叉，下颌微收，手指结构自然</option>
+            <option>不看镜头，目光望向画面外，抓拍感</option>
+            <option>轻轻看向镜头旁边，似笑非笑，采访感</option>
+            <option>自然行走或转身瞬间，保持真实动态感</option>
+          </select></label>
+          <div class="two-col">
+            <label>光线<select id="pLight">
+              <option>大型柔光箱从侧前方照射，柔和自然</option>
+              <option>大面积自然窗光，阴影柔和通透</option>
+              <option>伦勃朗光 + 轻微轮廓光</option>
+              <option>高调柔和漫射光，画面干净但不过曝</option>
+              <option>柔和侧逆光，形成自然发丝轮廓</option>
+              <option>硬朗侧光 + 深色环境，电影感明暗层次</option>
+              <option>暖色主光 + 微弱冷色环境光</option>
+            </select></label>
+            <label>镜头<select id="pLens">
+              <option>85mm F1.4 人像视角</option><option>85mm F1.8 人像视角</option><option>50mm F2.0 自然人像视角</option><option>50mm F1.4 浅景深</option><option>35mm 环境人像视角</option><option>iPhone 后置主摄真实摄影感</option>
+            </select></label>
+          </div>
+          <div class="two-col">
+            <label>图片比例<select id="pRatio"><option>3:4 竖版</option><option>2:3 竖版</option><option>4:5 竖版</option><option>9:16 竖版</option><option>1:1 方图</option></select></label>
+            <label>画面质感<select id="pTone"><option>低饱和高级灰，干净通透</option><option>自然真实色彩，轻微暖调</option><option>Portra 400 轻胶片质感</option><option>低对比柔和日系色调</option><option>电影感低饱和冷暖层次</option><option>黑白高反差，细腻灰阶</option></select></label>
+          </div>
+
+          <div class="section-title"><span>04</span><div><strong>真实性约束</strong><small>默认按“减少 AI 感”设置</small></div></div>
           <div class="check-list">
-            <label><input id="pIdentity" type="checkbox" checked /> 严格保持人物相貌与年龄感不变</label>
-            <label><input id="pSkin" type="checkbox" checked /> 保留真实皮肤纹理和发丝</label>
-            <label><input id="pAntiAI" type="checkbox" checked /> 减少 AI 感，不网红脸、不欧美化</label>
+            <label><input id="pIdentity" type="checkbox" checked /> 严格保持人物本人相貌、年龄感与辨识度</label>
+            <label><input id="pSkin" type="checkbox" checked /> 保留毛孔、真实皮肤、发丝与布料纹理</label>
+            <label><input id="pAntiAI" type="checkbox" checked /> 不网红脸、不欧美化、不塑料皮肤</label>
+            <label><input id="pHands" type="checkbox" checked /> 手指、四肢、头身比例与人体结构真实</label>
+            <label><input id="pClean" type="checkbox" checked /> 高清通透、无噪点、无过锐化、无脏污</label>
           </div>
-          <label>额外要求<textarea id="pExtra" rows="3" placeholder="例如：镜头拉远一点、人物往下一些、背景不要杂乱……"></textarea></label>
-          <button id="generatePrompt" class="primary">生成提示词</button>
+          <label>额外要求<textarea id="pExtra" rows="3" placeholder="例如：人物看镜头、镜头拉远一点、戴精致女士手表、不要霸总感……"></textarea></label>
+          <div class="action-row"><button id="generatePrompt" class="primary">生成高级提示词</button><button id="resetPrompt" class="secondary compact-btn">重置</button></div>
         </div>
 
         <div class="result-card">
-          <div class="result-head"><strong>生成结果</strong><button class="small-btn" data-copy-target="promptOutput">复制</button></div>
-          <textarea id="promptOutput" rows="14" placeholder="生成后的提示词会显示在这里"></textarea>
+          <div class="result-head"><strong>生成结果</strong><div class="result-actions"><button id="savePrompt" class="small-btn">收藏</button><button class="small-btn" data-copy-target="promptOutput">复制</button></div></div>
+          <textarea id="promptOutput" rows="18" placeholder="生成后的提示词会显示在这里"></textarea>
+        </div>
+
+        <div class="result-card">
+          <div class="result-head"><strong>我的提示词收藏</strong><span class="mini-muted">仅保存在当前浏览器</span></div>
+          <div id="promptFavorites" class="favorite-list"></div>
         </div>
       </section>
 
       <section id="idphoto" class="page">
-        <div class="page-head"><button class="back" data-go="home">‹</button><div><h2>证件照尺寸</h2><p>常用规格 + 自定义像素计算</p></div></div>
+        <div class="page-head"><button class="back" data-go="home">‹</button><div><h2>证件照工具</h2><p>尺寸换算 + 红蓝白背景 + 规范提示词</p></div></div>
         <div class="form-card">
+          <div class="section-title"><span>01</span><div><strong>选择规格</strong><small>常用尺寸，也支持自定义</small></div></div>
           <label>常用规格<select id="idPreset">
             <option value="22,32,300">小一寸 · 22×32 mm</option>
             <option value="25,35,300">一寸 · 25×35 mm</option>
@@ -106,22 +153,34 @@
             <label>高 mm<input id="idH" type="number" step="0.1" value="32" /></label>
             <label>DPI<input id="idDpi" type="number" value="300" /></label>
           </div>
-          <button id="calcId" class="primary">计算像素</button>
+
+          <div class="section-title"><span>02</span><div><strong>证件照背景</strong><small>红 / 蓝 / 白三种常用纯色背景</small></div></div>
+          <div class="id-bg-grid">
+            <button class="id-bg active" data-bg="blue" data-color="#438EDB"><span style="background:#438EDB"></span><strong>蓝色</strong><small>常用蓝底</small></button>
+            <button class="id-bg" data-bg="red" data-color="#D92D37"><span style="background:#D92D37"></span><strong>红色</strong><small>常用红底</small></button>
+            <button class="id-bg light" data-bg="white" data-color="#FFFFFF"><span style="background:#FFFFFF"></span><strong>白色</strong><small>纯白背景</small></button>
+          </div>
+          <button id="calcId" class="primary">计算并生成要求</button>
         </div>
         <div class="metric-grid">
           <div class="metric"><span>建议像素</span><strong id="idPixels">260 × 378 px</strong></div>
           <div class="metric"><span>宽高比</span><strong id="idRatio">11 : 16</strong></div>
           <div class="metric"><span>打印尺寸</span><strong id="idMm">22 × 32 mm</strong></div>
         </div>
-        <div class="note-card">计算公式：像素 = 毫米 ÷ 25.4 × DPI。实际证件系统可能有指定像素要求，提交前以平台要求为准。</div>
+        <div class="result-card">
+          <div class="result-head"><strong>证件照生成要求</strong><button class="small-btn" data-copy-target="idPromptOutput">复制</button></div>
+          <textarea id="idPromptOutput" rows="10"></textarea>
+        </div>
+        <div class="note-card">背景色为常用参考视觉色，不代表所有考试、护照或政府系统的官方指定色值。正式提交前请以目标机构的最新要求为准。</div>
       </section>
 
       <section id="orders" class="page">
-        <div class="page-head"><button class="back" data-go="home">‹</button><div><h2>订单管理</h2><p>数据保存在这台 iPhone 的浏览器里</p></div></div>
+        <div class="page-head"><button class="back" data-go="home">‹</button><div><h2>订单管理</h2><p>兼容 V1 数据，仍保存在这台 iPhone 浏览器</p></div></div>
         <div class="form-card compact">
           <div class="two-col"><label>客户/备注名<input id="oName" placeholder="例如：小红书-张女士" /></label><label>订单编号<input id="oId" placeholder="自动生成" /></label></div>
-          <div class="two-col"><label>服务<select id="oType"><option>AI 职业照</option><option>证件照</option><option>写真</option><option>毕业海报</option><option>情侣/婚纱</option><option>其他</option></select></label><label>状态<select id="oStatus"><option>待处理</option><option>制作中</option><option>已完成</option><option>已交付</option></select></label></div>
-          <label>备注<textarea id="oNote" rows="2" placeholder="比例、服装、修改要求、交付时间……"></textarea></label>
+          <div class="two-col"><label>来源平台<select id="oPlatform"><option>淘宝</option><option>小红书</option><option>闲鱼</option><option>抖音</option><option>微信</option><option>其他</option></select></label><label>服务<select id="oType"><option>AI 职业照</option><option>证件照</option><option>高级写真</option><option>毕业海报</option><option>情侣/婚纱</option><option>老照片修复</option><option>其他</option></select></label></div>
+          <div class="two-col"><label>状态<select id="oStatus"><option>待处理</option><option>制作中</option><option>已完成</option><option>已交付</option></select></label><label>交付日期<input id="oDeadline" type="date" /></label></div>
+          <label>备注<textarea id="oNote" rows="2" placeholder="比例、服装、发型、背景、修改要求、交付细节……"></textarea></label>
           <button id="addOrder" class="primary">添加订单</button>
         </div>
 
@@ -137,11 +196,11 @@
         <div class="form-card">
           <div class="two-col">
             <label>平台<select id="cPlatform"><option>淘宝</option><option>小红书</option><option>闲鱼</option><option>抖音</option></select></label>
-            <label>服务<select id="cService"><option>AI 职业照</option><option>AI 写真</option><option>证件照精修</option><option>情侣/婚纱照</option><option>毕业海报</option></select></label>
+            <label>服务<select id="cService"><option>AI 职业照</option><option>AI 高级写真</option><option>证件照精修</option><option>情侣/婚纱照</option><option>毕业海报</option><option>老照片修复</option></select></label>
           </div>
-          <label>价格/套餐<input id="cPrice" placeholder="例如：29.9元起 / 3张精修" /></label>
+          <label>价格/套餐<input id="cPrice" placeholder="例如：29.9 元起 / 3 张精修" /></label>
           <label>核心卖点<textarea id="cPoints" rows="3" placeholder="例如：保持本人相貌、自然真实、快速交付、可修改"></textarea></label>
-          <label>语气<select id="cTone"><option>自然可信</option><option>简洁专业</option><option>小红书种草感</option><option>高端克制</option></select></label>
+          <label>语气<select id="cTone"><option>自然可信</option><option>简洁专业</option><option>小红书种草感</option><option>高端克制</option><option>成交导向</option></select></label>
           <button id="generateCopy" class="primary">生成文案</button>
         </div>
         <div class="result-card">

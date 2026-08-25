@@ -1,24 +1,34 @@
-# luck AI 图片工作台
+# luck AI 图片工作台 V2
 
-手机优先的静态网页工具，第一版不需要账号、不需要数据库、不需要 AI API。
+面向 iPhone 使用的纯前端图片业务工作台，无需自建服务器、无需数据库、无需 AI API。
 
-## 已包含
-- 提示词生成器：写真 / 职业照 / 证件照等中文提示词拼装
-- 证件照尺寸：毫米 + DPI 自动换算像素
-- 订单管理：状态、备注、本地保存、JSON 备份
-- 商品文案：淘宝 / 小红书 / 闲鱼 / 抖音文案草稿
-- PWA：部署后可从 iPhone Safari 添加到主屏幕
+## V2 新增
+- 男女分开发型：女生 15 种、男生 14 种
+- 14 个高级写真风格预设
+- 12 种高级纯色摄影棚背景 + 多种生活场景
+- 证件照红 / 蓝 / 白三种背景选择
+- 证件照尺寸换算 + 一键生成规范提示词
+- 提示词收藏与快速载入 / 复制
+- 订单增加来源平台与交付日期
+- 保留 V1 订单数据（继续使用 luck_ai_orders_v1）
 
-## 最简单的上线方式：GitHub Pages
-1. 新建 GitHub 仓库，例如 `luck-ai-workbench`。
-2. 上传本文件夹内全部文件，保持 `icons` 文件夹结构不变。
-3. GitHub 仓库 → Settings → Pages。
-4. Source 选择 `Deploy from a branch`，Branch 选 `main` + `/root`。
-5. 保存后得到网页地址；用 iPhone Safari 打开。
-6. Safari 分享按钮 → “添加到主屏幕”。
+## GitHub Pages 更新方式
+把本文件夹中的 8 个文件上传到仓库根目录，覆盖同名文件：
+- index.html
+- app.js
+- styles.css
+- manifest.json
+- sw.js
+- icon-192.png
+- icon-512.png
+- README.md
 
-## 重要说明
-- 订单保存在浏览器 localStorage；清理 Safari 网站数据会删除本地订单。
-- 可定期点击“导出备份”保存 JSON 文件。
-- 当前提示词和文案属于模板生成，不调用大模型，因此没有 API 成本。
-- 后续若要账号、跨设备同步、客户上传图片、AI 自动生成，建议接 Supabase / Cloudflare / Vercel 后端，并把 API Key 放在服务端。
+GitHub Pages 仍保持：main + /(root)。提交后等待部署完成即可。
+
+## 隐私
+- 订单和提示词收藏保存在浏览器 localStorage。
+- 当前版本不上传客户照片。
+- Public GitHub 仓库中的源码可被他人查看；不要把客户原图、API Key、密码或敏感商业资料放入项目文件。
+
+## 注意
+证件照背景色为常用视觉参考，不同机构可能有不同尺寸、像素或色值要求，正式提交前以目标机构最新规范为准。
